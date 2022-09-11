@@ -5,6 +5,54 @@ namespace Assignment1.Tests;
 public class RegExprTests
 {
     [Fact]
+    public void Given_Many_Strings_Return_1_Long_String()
+    {
+        // Given
+        var input = new List<string>{"There is nothing proper about what you are doing", "But at least make sure", "You cut my head off", "properly"};
+        var expected = new List<string>{"There", "is", "nothing", "proper", "about", "what", "you", "are", "doing", "But", "at", "least", "make", "sure", "You", "cut", "my", "head", "off", "properly"};
+    
+        // When
+
+        var result = RegExpr.SplitLine(input);
+    
+        // Then
+
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void Given_single_String_Return_1_Long_String()
+    {
+        // Given
+        var input = new List<string>{"You have exactly 2 hours to solve my ass slap puzzle"};
+        var expected = new List<string>{"You", "have", "exactly", "2", "hours", "to", "solve", "my", "ass", "slap", "puzzle"};
+    
+        // When
+
+        var result = RegExpr.SplitLine(input);
+    
+        // Then
+
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void Given_many_Single_Word_Strings_Return_1_Long_String()
+    {
+        // Given
+        var input = new List<string>{"3", "stanky", "legs"};
+        var expected = new List<string>{"3", "stanky", "legs"};
+    
+        // When
+
+        var result = RegExpr.SplitLine(input);
+    
+        // Then
+
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
     public void ShouldReturnListOf8intints()
     {
         // Given
