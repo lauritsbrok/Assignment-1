@@ -4,7 +4,20 @@ namespace Assignment1;
 
 public static class RegExpr
 {
-    public static IEnumerable<string> SplitLine(IEnumerable<string> lines) => throw new NotImplementedException();
+    public static IEnumerable<string> SplitLine(IEnumerable<string> lines){
+        var wordPattern = @"([A-Za-z0-9])\w*";
+        var spacePattern = @" ";
+        foreach(string line in lines){
+            string[] words = Regex.Split(line, spacePattern, RegexOptions.IgnoreCase);
+            foreach(string word in words){
+                var match   = Regex.Match(word, wordPattern);
+                yield return (match.Value);
+            }
+            
+            
+            
+        }
+    }
 
     public static IEnumerable<(int width, int height)> Resolution(IEnumerable<string> resolutions){
         var pattern = @"^(?<width>\d{3,4})x(?<height>\d{3,4})$";
